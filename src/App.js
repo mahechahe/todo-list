@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import Context from './context/Context';
+import useContext from './context/useContext';
+import { Nav } from './components/Nav';
+import { Body } from './components/Body';
 
 function App() {
+  const initialState = useContext()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={initialState}>
+      <section className='section--container'>
+        <Nav></Nav>
+        <Body></Body>
+      </section>
+    </Context.Provider>
   );
-}
+} 
 
 export default App;
